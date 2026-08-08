@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SkillShip</title>
+    <link rel="stylesheet" href="assets/css/skillship.css" />
+</head>
+<body>
+ <!-- The header shows the site name and tagline. It stays visible on both views -->
+  <header class="site-header">
+    <h1 class="logo">Skill<span class="logo-accent">Ship</span></h1>
+    <p class="tagline">Learn to code, one lesson at a time.</p>
+  </header>
+
+  <!-- HOME VIEW: the search box, the category buttons, and the grid of course cards -->
+  <div id="home-view">
+
+    <!-- The search box does not work yet — a later mission will make it search -->
+    <section class="search-row">
+      <input class="search-input" type="text" placeholder="Search courses...">
+      <button class="green-button">Search</button>
+    </section>
+
+    <!-- The category buttons do nothing yet — a later mission will make them filter -->
+    <nav class="category-filter">
+      <button class="category-button active">All</button>
+      <button class="category-button">Web Dev</button>
+      <button class="category-button">JavaScript</button>
+      <button class="category-button">React</button>
+    </nav>
+
+    <!-- This grid starts EMPTY. script.js loops over the courses and fills it in -->
+    <main class="course-grid" id="course-grid"></main>
+
+  </div>
+
+  <!-- COURSE VIEW: one course's details. It is hidden until a card is clicked -->
+  <div id="course-view" class="hidden">
+
+    <!-- Clicking this takes the student back to the home view -->
+    <nav>
+      <a class="back-link" id="back-button">← Back to all courses</a>
+    </nav>
+
+    <!-- script.js fills in the category, title, and description for the chosen course -->
+    <section class="course-header">
+      <span class="category-badge" id="detail-category"></span>
+      <h2 class="course-title" id="detail-title"></h2>
+      <p class="course-description" id="detail-description"></p>
+      <div class="progress-row">
+        <div class="progress-track">
+          <div class="progress-fill" id="course-progress-fill"></div>
+        </div>
+        <span class="progress-text" id="course-progress-text">0%</span>
+      </div>
+    </section>
+
+    <!-- script.js fills this list with one row per lesson in the chosen course -->
+    <section>
+      <h3>Lessons</h3>
+      <ol class="lesson-list" id="detail-lesson-list"></ol>
+    </section>
+
+  </div>
+
+  <!-- LESSON VIEW: one lesson's video and description. It is hidden until a lesson row is clicked -->
+  <div id="lesson-view" class="hidden">
+
+    <!-- Clicking this takes the student back to the course view -->
+    <nav>
+      <a class="back-link" id="lesson-back-button">← Back to course</a>
+    </nav>
+
+    <h2 class="lesson-page-title" id="lesson-title"></h2>
+
+    <div class="video-placeholder">
+      <iframe id="lesson-video" width="100%" height="100%" style="border: none;" allowfullscreen></iframe>
+    </div>
+
+    <p class="lesson-description" id="lesson-description"></p>
+
+    <button class="green-button" id="complete-button">Mark Complete</button>
+
+  </div>
+
+  <!-- The footer stays at the bottom of both views -->
+  <footer class="site-footer">
+    <p>SkillShip — a student project.</p>
+  </footer>
+</body>
+<script src="assets/js/data.js"></script>
+<script src="assets/js/skillship.js"></script>
+</html>
