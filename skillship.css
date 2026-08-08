@@ -1,0 +1,444 @@
+/* ==========================================================
+   SkillShip stylesheet — Checkpoint B (CSS week)
+   One dark theme: near-black background, white text,
+   and one green accent for progress, badges, and buttons.
+   ========================================================== */
+
+/* Our color palette. Naming colors once here lets us reuse them everywhere. */
+:root {
+  --background: #0f1115;
+  --surface: #171a21;
+  --border: #262b35;
+  --text: #f5f7fa;
+  --text-muted: #98a2b3;
+  --accent: #22c55e;
+  --accent-soft: rgba(34, 197, 94, 0.12);
+}
+
+/* Remove the browser's default spacing so every browser starts the same */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* The whole page: dark background, light text, one centered column */
+body {
+  background-color: var(--background);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 48px 24px 96px;
+}
+
+/* Links use the normal text color and no underline — we style them ourselves */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* ---------- The site header at the top of every page ---------- */
+
+.site-header {
+  margin-bottom: 32px;
+}
+
+.logo {
+  font-size: 2.2rem;
+  font-weight: 800;
+}
+
+/* The "Ship" half of the logo is green */
+.logo-accent {
+  color: var(--accent);
+}
+
+.tagline {
+  color: var(--text-muted);
+  font-size: 1.05rem;
+}
+
+/* The "back" link near the top of the inner pages */
+.back-link {
+  display: inline-block;
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 12px;
+  transition: color 0.2s;
+}
+
+.back-link:hover {
+  color: var(--accent);
+}
+
+/* ---------- The search box on the home page ---------- */
+
+.search-row {
+  display: flex;
+  gap: 10px;
+}
+
+.search-input {
+  flex: 1;
+  padding: 14px 18px;
+  font-size: 1rem;
+  color: var(--text);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: var(--accent);
+}
+
+/* ---------- The green buttons (Search, Mark as Complete) ---------- */
+
+.green-button {
+  padding: 12px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f1115;
+  background-color: var(--accent);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.green-button:hover {
+  opacity: 0.85;
+}
+
+/* ---------- The category filter buttons on the home page ---------- */
+
+.category-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0 36px;
+}
+
+.category-button {
+  padding: 8px 18px;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.category-button:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* The selected category button is filled green */
+.active {
+  color: #0f1115;
+  background-color: var(--accent);
+  border-color: var(--accent);
+  font-weight: 600;
+}
+
+/* ---------- The grid of course cards on the home page ---------- */
+
+.course-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+/* ---------- One course card ---------- */
+
+.course-card {
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.2s, border-color 0.2s;
+}
+
+/* The card lifts up slightly and glows green when you point at it */
+.course-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+.course-card a {
+  display: block;
+}
+
+.course-thumbnail {
+  display: block;
+  width: 100%;
+}
+
+.course-card-body {
+  padding: 18px;
+}
+
+.course-card h2 {
+  font-size: 1.15rem;
+  margin: 10px 0 2px;
+}
+
+.lesson-count {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 14px;
+}
+
+/* ---------- The small green category badge ---------- */
+
+.category-badge {
+  display: inline-block;
+  padding: 3px 12px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: var(--accent);
+  background-color: var(--accent-soft);
+  border-radius: 999px;
+}
+
+/* ---------- The progress bar (a green bar inside a grey track) ---------- */
+
+.progress-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.progress-track {
+  flex: 1;
+  height: 8px;
+  background-color: var(--border);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+/* The fill is stuck at 40% for now — JavaScript will set the real width later */
+.progress-fill {
+  height: 100%;
+  width: 40%;
+  background-color: var(--accent);
+  border-radius: 999px;
+}
+
+.progress-text {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+/* ---------- The course info at the top of the course page ---------- */
+
+.course-header {
+  margin-bottom: 36px;
+}
+
+.course-title {
+  font-size: 2rem;
+  margin: 12px 0 8px;
+}
+
+.course-description {
+  color: var(--text-muted);
+  max-width: 640px;
+  margin-bottom: 24px;
+}
+
+/* ---------- The lesson list on the course page ---------- */
+
+.lesson-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+/* One lesson row: number circle, title, and duration in a line */
+.lesson-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.lesson-row:hover {
+  border-color: var(--accent);
+}
+
+.lesson-number {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  background-color: var(--background);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+}
+
+.lesson-row-title {
+  flex: 1;
+  font-weight: 500;
+}
+
+.lesson-duration {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+/* ---------- The lesson page: title, video box, and description ---------- */
+
+.lesson-page-title {
+  font-size: 1.7rem;
+  margin-bottom: 20px;
+}
+
+/* The box where the real video will go later */
+.video-placeholder {
+  aspect-ratio: 16 / 9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-muted);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.lesson-description {
+  color: var(--text-muted);
+  max-width: 720px;
+  margin-bottom: 28px;
+}
+
+/* ---------- The Previous / Next lesson buttons ---------- */
+
+.lesson-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 36px;
+}
+
+.nav-button {
+  padding: 10px 22px;
+  font-size: 0.95rem;
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s;
+}
+
+.nav-button:hover {
+  border-color: var(--accent);
+}
+
+/* A greyed-out button for when there is no previous lesson */
+.disabled {
+  opacity: 0.35;
+}
+
+/* ---------- The certificate box ---------- */
+
+.certificate {
+  text-align: center;
+  padding: 36px 24px;
+  margin-bottom: 36px;
+  background-color: var(--accent-soft);
+  border: 1px solid var(--accent);
+  border-radius: 12px;
+}
+
+.certificate-emoji {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.certificate-title {
+  font-size: 1.5rem;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+
+.certificate-text {
+  color: var(--text-muted);
+  max-width: 460px;
+  margin: 0 auto;
+}
+
+/* ---------- The footer at the bottom of every page ---------- */
+
+.site-footer {
+  margin-top: 48px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ---------- Mobile: the card grid becomes one column on small screens ---------- */
+
+@media (max-width: 600px) {
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================================
+   Mission 3 additions (JavaScript week)
+   A few small rules the new JavaScript needs.
+   ========================================================== */
+
+/* Anything with this class is hidden. JavaScript adds and removes it
+   to switch between the home view and the course detail view. */
+.hidden {
+  display: none;
+}
+
+/* The cards and the back link are clicked through JavaScript now,
+   so show a pointer cursor to tell the user they are clickable. */
+.course-card {
+  cursor: pointer;
+}
+
+.back-link {
+  cursor: pointer;
+}
+
+/* The short course description shown on each home page card. */
+.card-description {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+}
+
+/* The lesson rows are clicked through JavaScript now, same as course cards. */
+.lesson-row {
+  cursor: pointer;
+}
+
+/* The complete button switches to this look once a lesson is marked done. */
+.green-button.done {
+  background-color: var(--surface);
+  color: var(--accent);
+}
